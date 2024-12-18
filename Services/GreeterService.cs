@@ -5,17 +5,22 @@ namespace ClientegRPC.Services;
 
 public class GreeterService : Greeter.GreeterBase
 {
-    private readonly ILogger<GreeterService> _logger;
-    public GreeterService(ILogger<GreeterService> logger)
+    public override Task<AgregarReply> AgregarCliente(AgregarRequest request, ServerCallContext context)
     {
-        _logger = logger;
+        return Task.FromResult(new AgregarReply
+        {
+            Rut = request.Rut,
+            Nombre = request.Nombre,
+            Apellido = request.Apellido
+        });
     }
 
-    public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
+    public override Task<ReservaReply> Reservar(ReservaRequest request, ServerCallContext context)
     {
-        return Task.FromResult(new HelloReply
+        return Task.FromResult(new ReservaReply
         {
-            Message = "Hello " + request.Name
+            IdCliente = request.IdCliente,
+            Dias = request.Dias
         });
     }
 }
