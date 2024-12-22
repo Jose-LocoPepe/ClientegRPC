@@ -19,11 +19,10 @@ public class GreeterService : Greeter.GreeterBase
 
     public override Task<ReservaReply> Reservar(ReservaRequest request, ServerCallContext context)
     {
-        // return Task.FromResult(new ReservaReply
-        // {
-        //     IdCliente = request.IdCliente,
-        //     Dias = request.Dias
-        // });
+        return Task.FromResult(new ReservaReply
+        {
+            
+        });
 
 
     }
