@@ -27,10 +27,12 @@ public class GreeterService : Greeter.GreeterBase
 
         cliente.Dias = request.Dias;
         clientesContext.SaveChanges();
+        Console.WriteLine($"Reserva de {cliente.Nombre} {cliente.Apellido} con {request.Dias} días realizada con éxito");
 
+        //Mostrar los dias que se reservaron
         return Task.FromResult(new ReservaReply
         {
-            Message = "Cliente actualizado exitosamente!"
+            Message = $"Reserva de {cliente.Nombre} {cliente.Apellido} con {request.Dias} días realizada con éxito"
         });
     }
 }
